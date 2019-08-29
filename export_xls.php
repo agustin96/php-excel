@@ -34,6 +34,17 @@ foreach ($registros as $objeto) :
     ];
 endforeach;
 
+$data2 = [[
+        'column_1' => 'John',
+        'column_2' => '123.45',
+        'column_3' => '2017-05-08',
+    ],
+    [
+        'column_1' => 'Mary',
+        'column_2' => '4321.09',
+        'column_3' => '2018-05-08',
+    ]];
+
 /* $users = new ArrayIterator([
     [
         'column_1' => 'John',
@@ -47,7 +58,7 @@ endforeach;
     ],
 ]); */
 
-$users = new ArrayIterator([$data]);
+$users = new ArrayIterator($data2);
 
 $columnCollection = new ExcelHelper\ColumnCollection([
     new ExcelHelper\Column('column_1',  'User',     10,     new ExcelHelper\CellStyle\Text()),
