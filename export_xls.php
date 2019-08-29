@@ -9,7 +9,7 @@ require __DIR__ . '/vendor/autoload.php';
 
 $database = "maricel";
 
-require '../connections/conexion.php';
+require 'connections/conexion.php';
 
 $registros = $base->query("SELECT
 
