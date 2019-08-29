@@ -26,7 +26,7 @@ $columnCollection = new ExcelHelper\ColumnCollection([
 
 $filename = sprintf('%s/my_excel_%s.xls', __DIR__, uniqid());
 
-echo $filename;
+//echo $filename;
 
 $phpExcel = new ExcelHelper\TableWorkbook($filename);
 $worksheet = $phpExcel->addWorksheet('My Users');
@@ -36,3 +36,5 @@ $table->setColumnCollection($columnCollection);
 
 $phpExcel->writeTable($table);
 $phpExcel->close();
+
+header("Location: " . filename);
