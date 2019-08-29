@@ -58,7 +58,7 @@ $data2 = [[
     ],
 ]); */
 
-$users = new ArrayIterator($data2);
+$users = new ArrayIterator($data);
 
 $columnCollection = new ExcelHelper\ColumnCollection([
     new ExcelHelper\Column('column_1',  'User',     10,     new ExcelHelper\CellStyle\Text()),
