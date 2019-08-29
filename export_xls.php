@@ -38,7 +38,7 @@ $json = json_decode(file_get_contents('php://input'), true);
 $arrayArticulos = $json[0];
 
 foreach ($arrayArticulos as $elemento) {
-    $lista = $elemento[lista];
+    $lista = $elemento[nombre_lista];
     $codigo = $elemento[codigo];
     $detalle = $elemento[detalle];
     $data[] = [
@@ -53,7 +53,7 @@ $users = new ArrayIterator($data);
 $columnCollection = new ExcelHelper\ColumnCollection([
     new ExcelHelper\Column('column_1',  'Lista',     10,     new ExcelHelper\CellStyle\Text()),
     new ExcelHelper\Column('column_2',  'Codigo',   15,     new ExcelHelper\CellStyle\Amount()),
-    new ExcelHelper\Column('column_3',  'Detalle',     15,     new ExcelHelper\CellStyle\Date()),
+    new ExcelHelper\Column('column_3',  'Detalle',     15,     new ExcelHelper\CellStyle\Text()),
 ]);
 
 $filename = sprintf('%s/my_excel_%s.xls', __DIR__, uniqid());
