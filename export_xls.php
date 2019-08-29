@@ -7,7 +7,7 @@ require __DIR__ . '/vendor/autoload.php';
 // Being an Iterator, the data can be any dinamically generated content
 // for example a PDOStatement set on unbuffered query
 
-$database = "maricel";
+/* $database = "maricel";
 
 require 'connections/conexion.php';
 
@@ -32,38 +32,28 @@ foreach ($registros as $objeto) :
         'column_2' => $total,
         'column_3' => '2017-05-08',
     ];
-endforeach;
+endforeach; */
 
-$data2 = [[
-        'column_1' => 'John',
-        'column_2' => '123.45',
-        'column_3' => '2017-05-08',
-    ],
-    [
-        'column_1' => 'Mary',
-        'column_2' => '4321.09',
-        'column_3' => '2018-05-08',
-    ]];
+$json = json_decode(file_get_contents('php://input'), true);
+$arrayArticulos = $json[0];
 
-/* $users = new ArrayIterator([
-    [
-        'column_1' => 'John',
-        'column_2' => '123.45',
-        'column_3' => '2017-05-08',
-    ],
-    [
-        'column_1' => 'Mary',
-        'column_2' => '4321.09',
-        'column_3' => '2018-05-08',
-    ],
-]); */
+foreach ($arrayArticulos as $elemento) {
+    $lista = $elemento[lista];
+    $codigo = $elemento[codigo];
+    $detalle = $elemento[detalle];
+    $data[] = [
+        'column_1' => $lista,
+        'column_2' => $codigo,
+        'column_3' => $detalle,
+    ];
+}
 
 $users = new ArrayIterator($data);
 
 $columnCollection = new ExcelHelper\ColumnCollection([
-    new ExcelHelper\Column('column_1',  'User',     10,     new ExcelHelper\CellStyle\Text()),
-    new ExcelHelper\Column('column_2',  'Amount',   15,     new ExcelHelper\CellStyle\Amount()),
-    new ExcelHelper\Column('column_3',  'Date',     15,     new ExcelHelper\CellStyle\Date()),
+    new ExcelHelper\Column('column_1',  'Lista',     10,     new ExcelHelper\CellStyle\Text()),
+    new ExcelHelper\Column('column_2',  'Codigo',   15,     new ExcelHelper\CellStyle\Amount()),
+    new ExcelHelper\Column('column_3',  'Detalle',     15,     new ExcelHelper\CellStyle\Date()),
 ]);
 
 $filename = sprintf('%s/my_excel_%s.xls', __DIR__, uniqid());
@@ -79,4 +69,6 @@ $table->setColumnCollection($columnCollection);
 $phpExcel->writeTable($table);
 $phpExcel->close();
 
-echo $filename;
+$respuesta = new \stdClass();
+$respuesta->estado = true;
+$respuesta->mensaje = $filename;
