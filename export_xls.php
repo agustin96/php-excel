@@ -14,7 +14,7 @@ require 'connections/conexion.php';
 $registros = $base->query("SELECT
 
                         xt_cierre1.fecha_real			AS fecha,
-                        SUM(xt_cierre1.total)			AS total,
+                        SUM(xt_cierre1.total)			AS total
 
                         FROM xt_cierre1
                                         
