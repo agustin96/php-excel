@@ -37,8 +37,8 @@ $table->setColumnCollection($columnCollection);
 $phpExcel->writeTable($table);
 $phpExcel->close();
 
-function header() {
+function goLocation() {
     header("Location: " . $filename);
 }
 
-header();
+goLocation();
