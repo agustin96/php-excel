@@ -1,5 +1,9 @@
 <?php
 
+header('Access-Control-Allow-Origin: *');
+//aquí agregamos solo los metodos que necesitemos
+header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE');
+
 use Slam\Excel\Helper as ExcelHelper;
 
 require __DIR__ . '/vendor/autoload.php';
