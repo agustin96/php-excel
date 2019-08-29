@@ -7,7 +7,7 @@ require __DIR__ . '/vendor/autoload.php';
 // Being an Iterator, the data can be any dinamically generated content
 // for example a PDOStatement set on unbuffered query
 
-$database = "maricel";
+/* $database = "maricel";
 
 require 'connections/conexion.php';
 
@@ -32,9 +32,9 @@ foreach ($registros as $objeto) :
         'column_2' => $total,
         'column_3' => '2017-05-08',
     ];
-endforeach;
+endforeach; */
 
-/* $json = json_decode(file_get_contents('php://input'), true);
+$json = json_decode(file_get_contents('php://input'), true);
 $arrayArticulos = $json[0];
 
 foreach ($arrayArticulos as $elemento) {
@@ -46,7 +46,7 @@ foreach ($arrayArticulos as $elemento) {
         'column_2' => $codigo,
         'column_3' => $detalle,
     ];
-} */
+}
 
 $users = new ArrayIterator($data);
 
