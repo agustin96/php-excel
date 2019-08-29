@@ -38,8 +38,9 @@ foreach ($registros as $objeto) :
     ];
 endforeach; */
 
-$json = json_decode(file_get_contents('php://input'), true);
-$arrayArticulos = $json[0];
+//$json = json_decode(file_get_contents('php://input'), true);
+//$arrayArticulos = $json[0];
+$arrayArticulos = $_POST["arrayArticulos"];
 
 foreach ($arrayArticulos as $elemento) {
     $lista = $elemento[nombre_lista];
